@@ -8,3 +8,10 @@ import requests
 baseUrl = "https://www.vivareal.com.br/"
 url = f"{baseUrl}venda/parana/curitiba/?pagina=" + "{}"
 
+#%%
+i=1
+ret = requests.get(url.format(i))
+soup = bs(ret.text, features="html.parser")
+houses = soup.find_all("a", {"class":"property-card__content-link js-card-title"})
+qtd_imoveis = int(soup.find("strong", {"class":"results-summary__count js-total-records"}).text.strip().replace(".",""))
+
