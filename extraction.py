@@ -15,3 +15,20 @@ soup = bs(ret.text, features="html.parser")
 houses = soup.find_all("a", {"class":"property-card__content-link js-card-title"})
 qtd_imoveis = int(soup.find("strong", {"class":"results-summary__count js-total-records"}).text.strip().replace(".",""))
 
+#%%
+df = pd.DataFrame(
+    columns=[
+        "descricao",
+        "endereco",
+        "area",
+        "condominio",
+        "quartos",
+        "wc",
+        "vagas",
+        "valor",
+        "wlink"
+    ]
+)
+
+i = 0
+
